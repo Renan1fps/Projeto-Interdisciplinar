@@ -15,7 +15,11 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
     }
 }
 
-
+void printfuncionario(a){
+    printf("\nNome : %s", a.nome);
+    printf("\nSalário: %.1f", a.salario);
+    printf("\nLucros: %.1f", a.lucros);
+}
 
 typedef struct{
 
@@ -34,7 +38,8 @@ int main()
     const int TAMANHOARRAY = 40;
     bool condicao = true;
     int valor;
-    int N = 1
+    int N = 0
+    char busca[50];
 
     while(condicao){
         printf("\n\nDigite o número de uma das opções abaixo ");
@@ -98,7 +103,9 @@ int main()
 
             case 3: {
 
-                printf("\nCase 3");
+                printf("\nDigite o nome do funcionario que gostaria de buscar:");
+                setbuf(stdin, NULL);
+                scanf("%49[^\n]", busca);
                 break;
             }
 

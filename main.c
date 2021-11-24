@@ -15,13 +15,7 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
     }
 }
 
-void printfuncionario(a){
-    printf("\nNome : %s", a.nome);
-    printf("\nSalário: %.1f", a.salario);
-    printf("\nLucros: %.1f", a.lucros);
-}
-
-typedef struct{
+ struct empregado{
 
     char nome[50];
     int idade;
@@ -30,16 +24,21 @@ typedef struct{
     float salario;
     char cargo[40];
 
-}Empregado;
+}Empregado[100];
+
+void printfuncionario(struct empregado a){
+    printf("\nNome : %s", a.nome);
+    printf("\nSalário: %.1f", a.salario);
+}
 
 
 int main()
 {
-    Empregado listaA[MAX];
+    Empregado[MAX];
     const int TAMANHOARRAY = 40;
     bool condicao = true;
     int valor, sair;
-    int N = 0
+    int N = 0;
     char buscaalunopornome[50];
 
     while(condicao){
@@ -66,25 +65,25 @@ int main()
                     printf("\nCodigo de cadastro do funcionario = %d\n", N);
                     printf("\nDigite o nome do funcionario: ");
                     setbuf(stdin, NULL);
-                    scanf("%49[^\n]", listaA[N].nome);
+                    scanf("%49[^\n]", Empregado[N].nome);
 
                     printf("\nDigite a idade do funcionario: ");
-                    scanf("%d", &listaA[N].idade);
+                    scanf("%d", &Empregado[N].idade);
 
                     printf("\nDigite o cpf do funcionario: ");
                     setbuf(stdin, NULL);
-                    scanf("%15[^\n]", &listaA[N].cpf);
+                    scanf("%15[^\n]", &Empregado[N].cpf);
 
                     printf("\nDigite o endereco do funcionario: ");
                     setbuf(stdin, NULL);
-                    scanf("%99[^\n]", &listaA[N].endereco);
+                    scanf("%99[^\n]", &Empregado[N].endereco);
 
                     printf("\nDigite ao salario do funcionario: ");
-                    scanf("%f", &listaA[N].salario);
+                    scanf("%f", &Empregado[N].salario);
 
                     printf("\nDigite o cargo do funcionario: ");
                     setbuf(stdin, NULL);
-                    scanf("%39[^\n]", &listaA[N].cargo);
+                    scanf("%39[^\n]", &Empregado[N].cargo);
 
 
                     N++;
@@ -101,7 +100,7 @@ int main()
                 printf("\t\tListagem dos empregados cadastrados:\n");
 
                 for(int i=0; i<N; i++){
-                    printf("\n- Codigo funcionario: %d.\n- Nome: %s\n",i,listaA[i].nome);
+                    printf("\n- Codigo funcionario: %d.\n- Nome: %s\n",i,Empregado[i].nome);
                 }
                 do{
                     printf("\nPressione 0 para sair: ");
@@ -112,30 +111,29 @@ int main()
             }
 
             case 3: {
-
-                printf("\nDigite o nome do funcionario que gostaria de buscar:");
                 setbuf(stdin, NULL);
-                scanf("%49[^\n]", buscaralunopornome);
-                break;
+                printf("\nDigite o nome do funcionario que gostaria de buscar:");
+                scanf("%[^\n]", buscaalunopornome);
                 for(int i =0; i < N;i++){
-                    if(comparaStrings(listaA[i].nome ,buscaralunopornome)==  1){
-                        printf("Funcionario encontrado:\n- Nome: %s.\n- CPF:")
+                    if(comparaStrings(Empregado[i].nome, buscaalunopornome) == 1){
+                        printfuncionario(Empregado[i]);
                     }
                 }
+                break;
             }
             case 4: {
 
-                printf("\nCase 4);
+                printf("\nCase 4");
                 break;
             }
             case 5: {
 
-                printf("\nCase 5);
+                printf("\nCase 5");
                 break;
             }
             case 6: {
 
-                printf("\nCase 6);
+                printf("\nCase 6");
                 break;
             }
             case 7: {
@@ -151,4 +149,3 @@ int main()
     return 0;
 }
 
-}

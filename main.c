@@ -23,6 +23,7 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
     char endereco[100];
     float salario;
     char cargo[40];
+    int vendas[100];
 
 }Empregado[100];
 
@@ -40,6 +41,10 @@ int main()
     int valor, sair;
     int N = 0;
     char buscaalunopornome[50];
+    int contaVenda = 0;
+    int valorVenda = 0;
+    float venda;
+
 
     while(condicao){
         printf("\n\nDigite o número de uma das opções abaixo ");
@@ -122,8 +127,20 @@ int main()
                 break;
             }
             case 4: {
-
-                printf("\nCase 4");
+                setbuf(stdin, NULL);
+                printf("\nDigite o nome do funcionário: ");
+                scanf("%[^\n]", buscaalunopornome);
+                for(int i =0; i < N;i++){
+                    if(comparaStrings(Empregado[i].nome, buscaalunopornome) == 1){
+                        setbuf(stdin, NULL);
+                        printf("\nDigite a quantidade de vendas do funcionario: ");
+                        scanf("%d", &venda);
+                        Empregado[i].vendas[valorVenda] = venda;
+                        valorVenda++;
+                        break;
+                    }
+                    
+                }
                 break;
             }
             case 5: {

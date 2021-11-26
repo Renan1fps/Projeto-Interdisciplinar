@@ -303,7 +303,7 @@ int main()
                 printf("\n\t\tFechamento mensal");
                 for(int i=0; i<N; i++){
                     somavenda = 0;
-                    salariofinal = 0
+                    salariofinal = 0;
                     for(int j=0; j<valorVenda; j++){
                         somavenda= somavenda + Empregado[i].vendas[j];
                     }

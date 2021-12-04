@@ -26,6 +26,7 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
     float salario;
     char cargo[40];
     int vendas[100];
+    int contvendas;
 
 }Empregado[100];
 
@@ -35,6 +36,7 @@ void printfuncionario(struct empregado a){
     printf("\nCPF: %s", a.cpf);
     printf("\nSalario: %.2f", a.salario);
     printf("\nCargo: %s", a.cargo);
+    printf("-----------------------------")
 }
 
 void printfuncionariofechamento(struct empregado b){
@@ -54,10 +56,16 @@ int main()
     int N = 0,M = 0;
     char buscafuncpornome[50];
     int contaVenda = 0;
-    int valorVenda = 0;
+    int contVenda[MAX];
     float venda,somavenda,salariofinal;
     char cargos[50][MAX2];
     float juroscargos[MAX2];
+
+
+
+    for(i=0;i<MAX;i++){
+        Empregado[i].contvendas=0;
+    }
 
 
     while(condicao){
@@ -212,8 +220,8 @@ int main()
                         setbuf(stdin, NULL);
                         printf("\nDigite o valor da venda do funcionario: ");
                         scanf("%d", &venda);
-                        Empregado[i].vendas[valorVenda] = venda;
-                        valorVenda++;
+                        Empregado[i].vendas[contVenda[i]] = venda;
+                        contVenda[i]++;
                         break;
                     }
                 }
@@ -304,11 +312,11 @@ int main()
                 for(int i=0; i<N; i++){
                     somavenda = 0;
                     salariofinal = 0;
-                    for(int j=0; j<valorVenda; j++){
+                    for(int j=0; j<contVenda[i]; j++){
                         somavenda= somavenda + Empregado[i].vendas[j];
                     }
                     printfuncionariofechamento(Empregado[i]);
-                    salariofinal =Empregado[i].salario + (somavenda*juroscargos[M]);
+                    salariofinal = Empregado[i].salario + (somavenda*juroscargos[M]);
                     printf("Salario final: %.2f",salariofinal);
 
                 }

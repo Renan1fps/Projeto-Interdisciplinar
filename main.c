@@ -28,7 +28,12 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
     int vendas[100];
     int contvendas;
 
-}Empregado[100];
+}Empregado[MAX];
+
+struct cargos{
+    char nome[50];
+    float valor;
+}Cargos[MAX];
 
 void printfuncionario(struct empregado a){
     printf("\nNome : %s", a.nome);
@@ -36,7 +41,7 @@ void printfuncionario(struct empregado a){
     printf("\nCPF: %s", a.cpf);
     printf("\nSalario: %.2f", a.salario);
     printf("\nCargo: %s", a.cargo);
-    printf("-----------------------------")
+    printf("\n-----------------------------");
 }
 
 void printfuncionariofechamento(struct empregado b){
@@ -44,6 +49,7 @@ void printfuncionariofechamento(struct empregado b){
     printf("\nCPF: %s", b.cpf);
     printf("\nSalario: %.2f", b.salario);
     printf("\nCargo: %s.\n", b.cargo);
+    printf("\nVendas -> %f", b.vendas);
 }
 
 int main()
@@ -57,27 +63,27 @@ int main()
     char buscafuncpornome[50];
     int contaVenda = 0;
     int contVenda[MAX];
-    float venda,somavenda,salariofinal;
+    float venda, somavenda = 0, salariofinal = 0;
     char cargos[50][MAX2];
     float juroscargos[MAX2];
 
 
 
     for(i=0;i<MAX;i++){
-        Empregado[i].contvendas=0;
+        Empregado[i].contvendas = 0;
     }
 
 
     while(condicao){
 
-        system("cls");
+        system("clear");
         printf("\n\n\n\t\tMENU\n");
-        printf("\n\nDigite o número de uma das opções abaixo. ");
+        printf("\n\nDigite o nï¿½mero de uma das opï¿½ï¿½es abaixo. ");
         printf("\n1-Cadastrar um novo cargo na empresa. ");
         printf("\n2-Cadastrar novo empregado. ");
         printf("\n3-Listar todos os empregados cadastrados. ");
         printf("\n4-Buscar empregado por nome.");
-        printf("\n5-Cadastrar venda de um funcionário.");
+        printf("\n5-Cadastrar venda de um funcionï¿½rio.");
         printf("\n6-Alterar algum dado do cadastro de um funcionario.");
         printf("\n7-Fazer o fechamento mensal.");
         printf("\n8-Sair.\n");
@@ -97,10 +103,10 @@ int main()
                 else{
                     printf("\nDigite o nome do cargo: ");
                     setbuf(stdin, NULL);
-                    scanf("%49[^\n]", cargos[M]);
+                    scanf("%49[^\n]", Cargos[M].nome);
 
-                    printf("\nDigite o juros que será aplicado ao total de vendas do funcionario neste cargo: ");
-                    scanf("%f", &juroscargos[M]);
+                    printf("\nDigite o juros que serï¿½ aplicado ao total de vendas do funcionario neste cargo: ");
+                    scanf("%f", &Cargos[M].valor);
 
                     M++;
                 }
@@ -112,7 +118,7 @@ int main()
 
                 break;
 
-            case 2: //cadastro de funcionários
+            case 2: //cadastro de funcionï¿½rios
 
                 printf("\n\t\tCadastro\n");
                 if(N == MAX){
@@ -141,7 +147,7 @@ int main()
                     printf("\nLista de cargos cadastrados:");
 
                     for(i=0;i<M;i++){
-                        printf("\n-Cargo %d: %s.",i,cargos[i]);
+                        printf("\n-Cargo %d: %s.",i, Cargos[i].nome);
                     }
                     printf("\n\n\nCaso o cargo desejado esteja na lista digite 1, ou caso queira cadastrar um novo cargo digite 2: ");
                     scanf("%d", &escolha);
@@ -149,10 +155,9 @@ int main()
 
                     switch(escolha){
                         case 1:
-                            printf("\nDigite o numero do cargo que deseja atribuir ao funcionario: ");
-                            scanf("%d",&p);
-                            strcpy (Empregado[N].cargo,cargos[p]);
-
+                            setbuf(stdin, NULL);
+                            printf("\nDigite o nome do cargo que deseja atribuir ao funcionario: ");
+                            scanf("%49[^\n]", Empregado[N].cargo);
                             break;
                         case 2:
                             if(M == MAX2){
@@ -163,7 +168,7 @@ int main()
                                 setbuf(stdin, NULL);
                                 scanf("%49[^\n]", cargos[M]);
 
-                                printf("\nDigite o juros que será aplicado do cargo: ");
+                                printf("\nDigite o juros que serï¿½ aplicado do cargo: ");
                                 scanf("%f", &juroscargos[M]);
 
                                 strcpy (Empregado[N].cargo,cargos[M]);
@@ -213,15 +218,15 @@ int main()
 
             case 5: //cadastrar vendas
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcionário: ");
+                printf("\nDigite o nome do funcionï¿½rio: ");
                 scanf("%[^\n]", buscafuncpornome);
-                for(int i =0; i < N;i++){
+                for(int i =0; i < N; i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
                         setbuf(stdin, NULL);
                         printf("\nDigite o valor da venda do funcionario: ");
-                        scanf("%d", &venda);
-                        Empregado[i].vendas[contVenda[i]] = venda;
-                        contVenda[i]++;
+                        scanf("%f", &venda);
+                        Empregado[i].vendas[Empregado[i].contvendas] = venda;
+                        Empregado[i].contvendas++;
                         break;
                     }
                 }
@@ -231,9 +236,9 @@ int main()
                 }while(sair!=0);
                 break;
 
-            case 6: //ALteração de dados
+            case 6: //ALteraï¿½ï¿½o de dados
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcionário que gostaria de fazer alteração nos dados: ");
+                printf("\nDigite o nome do funcionï¿½rio que gostaria de fazer alteraï¿½ï¿½o nos dados: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -242,7 +247,7 @@ int main()
 
 
                         do{
-                            printf("\n Escolha uma das opções a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endereço, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opcao: ");
+                            printf("\n Escolha uma das opï¿½ï¿½es a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endereï¿½o, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opcao: ");
                             scanf("%d", &escolha);
 
                             switch(escolha){
@@ -289,10 +294,10 @@ int main()
                                     break;
                                 }
                                 default:
-                                    printf("Opção inválida!\n");
+                                    printf("Opï¿½ï¿½o invï¿½lida!\n");
                                     break;
                             }
-                        printf("\nCaso queira fazer outra aleração digite um número diferente de 0: ");
+                        printf("\nCaso queira fazer outra aleraï¿½ï¿½o digite um nï¿½mero diferente de 0: ");
                         scanf("%d", &sair);
 
                         }while(sair!=0);
@@ -309,15 +314,19 @@ int main()
             case 7: //fechamento mensal
 
                 printf("\n\t\tFechamento mensal");
-                for(int i=0; i<N; i++){
-                    somavenda = 0;
-                    salariofinal = 0;
-                    for(int j=0; j<contVenda[i]; j++){
-                        somavenda= somavenda + Empregado[i].vendas[j];
+                for(int i = 0; i < N; i++){
+                    for (int p = 0; p < Empregado[i].contvendas; p++){
+                        somavenda = somavenda + Empregado[i].vendas[p];
                     }
                     printfuncionariofechamento(Empregado[i]);
-                    salariofinal = Empregado[i].salario + (somavenda*juroscargos[M]);
-                    printf("Salario final: %.2f",salariofinal);
+                    float teste = 0;
+                    for(int j = 0; j < N; j++){
+                        if(comparaStrings(Empregado[i].cargo, Cargos[j].nome) == 1){
+                            teste = Cargos[j].valor;
+                        }
+                    }
+                    salariofinal = Empregado[i].salario + (somavenda * teste);
+                    printf("\nSalario final: %.2f", salariofinal);
 
                 }
                 do{
@@ -333,7 +342,7 @@ int main()
                 break;
 
             default:
-                printf("Opção inválida!\n");
+                printf("Opï¿½ï¿½o invï¿½lida!\n");
 
                 break;
         }

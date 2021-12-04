@@ -64,12 +64,12 @@ int main()
 
         system("cls");
         printf("\n\n\n\t\tMENU\n");
-        printf("\n\nDigite o n√∫mero de uma das op√ß√µes abaixo. ");
+        printf("\n\nDigite o n˙mero de uma das opÁıes abaixo. ");
         printf("\n1-Cadastrar um novo cargo na empresa. ");
         printf("\n2-Cadastrar novo empregado. ");
         printf("\n3-Listar todos os empregados cadastrados. ");
         printf("\n4-Buscar empregado por nome.");
-        printf("\n5-Cadastrar venda de um funcion√°rio.");
+        printf("\n5-Cadastrar venda de um funcion·rio.");
         printf("\n6-Alterar algum dado do cadastro de um funcionario.");
         printf("\n7-Fazer o fechamento mensal.");
         printf("\n8-Sair.\n");
@@ -91,7 +91,7 @@ int main()
                     setbuf(stdin, NULL);
                     scanf("%49[^\n]", cargos[M]);
 
-                    printf("\nDigite o juros que ser√° aplicado ao total de vendas do funcionario neste cargo: ");
+                    printf("\nDigite o juros que ser· aplicado ao total de vendas do funcionario neste cargo: ");
                     scanf("%f", &juroscargos[M]);
 
                     M++;
@@ -104,7 +104,7 @@ int main()
 
                 break;
 
-            case 2: //cadastro de funcion√°rios
+            case 2: //cadastro de funcion·rios
 
                 printf("\n\t\tCadastro\n");
                 if(N == MAX){
@@ -135,9 +135,9 @@ int main()
                     for(i=0;i<M;i++){
                         printf("\n-Cargo %d: %s.",i,cargos[i]);
                     }
-                    printf("\nCaso o cargo desejado esteja na lista digite 1, ou caso queira cadastrar um novo cargo digite 2: ");
+                    printf("\n\n\nCaso o cargo desejado esteja na lista digite 1, ou caso queira cadastrar um novo cargo digite 2: ");
                     scanf("%d", &escolha);
-                    printf("\n");
+
 
                     switch(escolha){
                         case 1:
@@ -155,7 +155,7 @@ int main()
                                 setbuf(stdin, NULL);
                                 scanf("%49[^\n]", cargos[M]);
 
-                                printf("\nDigite o juros que ser√° aplicado do cargo: ");
+                                printf("\nDigite o juros que ser· aplicado do cargo: ");
                                 scanf("%f", &juroscargos[M]);
 
                                 strcpy (Empregado[N].cargo,cargos[M]);
@@ -174,7 +174,7 @@ int main()
                 break;
 
 
-            case 3:
+            case 3: //Listar empregados
                 printf("\t\tListagem dos empregados cadastrados:\n");
 
                 for(int i=0; i<N; i++){
@@ -188,9 +188,9 @@ int main()
                 break;
 
 
-            case 4:
+            case 4: //Buscar empregado por nome
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcionario que gostaria de buscar:");
+                printf("\nDigite o nome do funcionario que gostaria de buscar: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -203,9 +203,9 @@ int main()
                 }while(sair!=0);
                 break;
 
-            case 5:
+            case 5: //cadastrar vendas
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcion√°rio: ");
+                printf("\nDigite o nome do funcion·rio: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -223,9 +223,9 @@ int main()
                 }while(sair!=0);
                 break;
 
-            case 6:
+            case 6: //ALteraÁ„o de dados
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcion√°rio que gostaria de fazer altera√ß√£o nos dados: ");
+                printf("\nDigite o nome do funcion·rio que gostaria de fazer alteraÁ„o nos dados: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -234,7 +234,7 @@ int main()
 
 
                         do{
-                            printf("\n Escolha uma das op√ß√µes a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endere√ßo, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opcao: ");
+                            printf("\n Escolha uma das opÁıes a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endereÁo, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opcao: ");
                             scanf("%d", &escolha);
 
                             switch(escolha){
@@ -281,10 +281,10 @@ int main()
                                     break;
                                 }
                                 default:
-                                    printf("Op√ß√£o inv√°lida!\n");
+                                    printf("OpÁ„o inv·lida!\n");
                                     break;
                             }
-                        printf("\nCaso queira fazer outra alera√ß√£o digite um n√∫mero diferente de 0: ");
+                        printf("\nCaso queira fazer outra aleraÁ„o digite um n˙mero diferente de 0: ");
                         scanf("%d", &sair);
 
                         }while(sair!=0);
@@ -312,6 +312,10 @@ int main()
                     printf("Salario final: %.2f",salariofinal);
 
                 }
+                do{
+                    printf("\nPressione 0 para sair: ");
+                    scanf("%d",&sair);
+                }while(sair!=0);
                 break;
 
             case 8:
@@ -321,11 +325,10 @@ int main()
                 break;
 
             default:
-                printf("Op√ß√£o inv√°lida!\n");
+                printf("OpÁ„o inv·lida!\n");
 
                 break;
-    }
-
+        }
     }
     return 0;
 }

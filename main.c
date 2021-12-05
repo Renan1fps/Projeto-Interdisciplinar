@@ -33,7 +33,7 @@ int comparaStrings(char nomeUm[], char nomeDois[]){
 struct cargos{
     char nome[50];
     float valor;
-}Cargos[MAX];
+}Cargos[MAX2];
 
 void printfuncionario(struct empregado a){
     printf("\nNome : %s", a.nome);
@@ -55,7 +55,6 @@ void printfuncionariofechamento(struct empregado b){
 int main()
 {
     Empregado[MAX];
-    const int TAMANHOARRAY = 40;
     bool condicao = true;
     int valor, sair, escolha;
     int i,p;
@@ -64,10 +63,6 @@ int main()
     int contaVenda = 0;
     int contVenda[MAX];
     float venda, somavenda = 0, salariofinal = 0;
-    char cargos[50][MAX2];
-    float juroscargos[MAX2];
-
-
 
     for(i=0;i<MAX;i++){
         Empregado[i].contvendas = 0;
@@ -105,7 +100,7 @@ int main()
                     setbuf(stdin, NULL);
                     scanf("%49[^\n]", Cargos[M].nome);
 
-                    printf("\nDigite o juros que ser� aplicado ao total de vendas do funcionario neste cargo: ");
+                    printf("\nDigite a porcentagem de comissão que ser� aplicado ao total de vendas do funcionario neste cargo: ");
                     scanf("%f", &Cargos[M].valor);
 
                     M++;
@@ -166,12 +161,11 @@ int main()
                             else{
                                 printf("\nDigite o nome do cargo: ");
                                 setbuf(stdin, NULL);
-                                scanf("%49[^\n]", cargos[M]);
+                                scanf("%49[^\n]", Cargos[M].nome);
 
-                                printf("\nDigite o juros que ser� aplicado do cargo: ");
-                                scanf("%f", &juroscargos[M]);
+                                printf("\nDigite o juros que ser� aplicado ao total de vendas do funcionario neste cargo: ");
+                                scanf("%f", &Cargos[M].valor);
 
-                                strcpy (Empregado[N].cargo,cargos[M]);
                                 M++;
                             }
                         break;

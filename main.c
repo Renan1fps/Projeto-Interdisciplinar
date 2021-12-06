@@ -35,7 +35,7 @@ struct cargos{
     float valor;
 }Cargos[MAX2];
 
-void printfuncionario(struct empregado a){
+void printFuncionario(struct empregado a){
     printf("\nNome : %s", a.nome);
     printf("\nIdade: %d", a.idade);
     printf("\nCPF: %s", a.cpf);
@@ -44,7 +44,7 @@ void printfuncionario(struct empregado a){
     printf("\n-----------------------------");
 }
 
-void printfuncionariofechamento(struct empregado b){
+void printFuncionarioFechamento(struct empregado b){
     printf("\nNome : %s", b.nome);
     printf("\nCPF: %s", b.cpf);
     printf("\nSalario: %.2f", b.salario);
@@ -150,6 +150,10 @@ int main()
 
                     switch(escolha){
                         case 1:
+                            if(Cargos[0].valor == 0 && escolha == 1){
+                                printf("\nNnenhum cargo cadastrado! ");
+                                break;
+                            }
                             setbuf(stdin, NULL);
                             printf("\nDigite o nome do cargo que deseja atribuir ao funcionário: ");
                             scanf("%49[^\n]", Empregado[N].cargo);
@@ -185,7 +189,7 @@ int main()
                 printf("\t\tListagem dos empregados cadastrados:\n");
 
                 for(int i=0; i<N; i++){
-                    printfuncionario(Empregado[i]);
+                    printFuncionario(Empregado[i]);
                 }
                 do{
                     printf("\nPressione 0 para sair: ");
@@ -201,7 +205,7 @@ int main()
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
-                        printfuncionario(Empregado[i]);
+                        printFuncionario(Empregado[i]);
                     }
                 }
                 do{
@@ -236,7 +240,7 @@ int main()
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
-                        printfuncionario(Empregado[i]);
+                        printFuncionario(Empregado[i]);
                         printf("\n");
 
 
@@ -277,13 +281,13 @@ int main()
                                     break;
                                 }
                                 case 6: {
-
+                                    setbuf(stdin, NULL);
                                     printf("\nLista de cargos cadastrados:");
-                                    for(i=0;i<M;i++){
-                                    printf("\n-Cargo %d: %s.",i,Cargos[i]);
+                                    for(int j=0;j<M;j++){
+                                    printf("\n-Cargo %d: %s.",j,Cargos[j].nome);
                                     }
-                                    printf("\nDigite o número do cargo que deseja atribuir ao funcionário: ");
-                                    scanf("%d",&p);
+                                    printf("\nDigite o nome do cargo que deseja atribuir ao funcionário: ");
+                                    scanf("%99[^\n]", Empregado[i].cargo);
                                     break;
                                 }
                                 default:
@@ -311,7 +315,7 @@ int main()
                     for (int p = 0; p < Empregado[i].contvendas; p++){
                         somavenda = somavenda + Empregado[i].vendas[p];
                     }
-                    printfuncionariofechamento(Empregado[i]);
+                    printFuncionarioFechamento(Empregado[i]);
                     float teste = 0;
                     for(int j = 0; j < N; j++){
                         if(comparaStrings(Empregado[i].cargo, Cargos[j].nome) == 1){

@@ -73,16 +73,16 @@ int main()
 
         system("clear");
         printf("\n\n\n\t\tMENU\n");
-        printf("\n\nDigite o n�mero de uma das op��es abaixo. ");
+        printf("\n\nDigite o número de uma das opções abaixo. ");
         printf("\n1-Cadastrar um novo cargo na empresa. ");
-        printf("\n2-Cadastrar novo empregado. ");
-        printf("\n3-Listar todos os empregados cadastrados. ");
-        printf("\n4-Buscar empregado por nome.");
-        printf("\n5-Cadastrar venda de um funcion�rio.");
-        printf("\n6-Alterar algum dado do cadastro de um funcionario.");
+        printf("\n2-Cadastrar novo funcionário. ");
+        printf("\n3-Listar todos os funcionários cadastrados. ");
+        printf("\n4-Buscar funcionário por nome.");
+        printf("\n5-Cadastrar venda de um funcionário.");
+        printf("\n6-Alterar algum dado do cadastro de um funcionário.");
         printf("\n7-Fazer o fechamento mensal.");
         printf("\n8-Sair.\n");
-        printf("\nEscolha uma opcao: ");
+        printf("\nEscolha uma opção: ");
         scanf("%d", &valor);
         printf("\n");
 
@@ -100,7 +100,7 @@ int main()
                     setbuf(stdin, NULL);
                     scanf("%49[^\n]", Cargos[M].nome);
 
-                    printf("\nDigite a porcentagem de comissão que ser� aplicado ao total de vendas do funcionario neste cargo: ");
+                    printf("\nDigite a porcentagem de comissão que será aplicado ao total de vendas do funcionário neste cargo: ");
                     scanf("%f", &Cargos[M].valor);
 
                     M++;
@@ -120,23 +120,23 @@ int main()
                     printf("\nLimite de armazenamento atingido!\n");
                 }
                 else{
-                    printf("\nCodigo de cadastro do funcionario = %d\n", N);
-                    printf("\nDigite o nome do funcionario: ");
+                    printf("\nCodigo de cadastro do funcionário = %d\n", N);
+                    printf("\nDigite o nome do funcionário: ");
                     setbuf(stdin, NULL);
                     scanf("%49[^\n]", Empregado[N].nome);
 
-                    printf("\nDigite a idade do funcionario: ");
+                    printf("\nDigite a idade do funcionário: ");
                     scanf("%d", &Empregado[N].idade);
 
-                    printf("\nDigite o cpf do funcionario: ");
+                    printf("\nDigite o cpf do funcionário: ");
                     setbuf(stdin, NULL);
                     scanf("%15[^\n]", &Empregado[N].cpf);
 
-                    printf("\nDigite o endereco do funcionario: ");
+                    printf("\nDigite o endereço do funcionário: ");
                     setbuf(stdin, NULL);
                     scanf("%99[^\n]", &Empregado[N].endereco);
 
-                    printf("\nDigite ao salario do funcionario: ");
+                    printf("\nDigite o salário do funcionário: ");
                     scanf("%f", &Empregado[N].salario);
 
                     printf("\nLista de cargos cadastrados:");
@@ -151,7 +151,7 @@ int main()
                     switch(escolha){
                         case 1:
                             setbuf(stdin, NULL);
-                            printf("\nDigite o nome do cargo que deseja atribuir ao funcionario: ");
+                            printf("\nDigite o nome do cargo que deseja atribuir ao funcionário: ");
                             scanf("%49[^\n]", Empregado[N].cargo);
                             break;
                         case 2:
@@ -163,7 +163,7 @@ int main()
                                 setbuf(stdin, NULL);
                                 scanf("%49[^\n]", Cargos[M].nome);
 
-                                printf("\nDigite o juros que ser� aplicado ao total de vendas do funcionario neste cargo: ");
+                                printf("\nDigite o juros que será aplicado ao total de vendas do funcionario neste cargo: ");
                                 scanf("%f", &Cargos[M].valor);
 
                                 M++;
@@ -197,7 +197,7 @@ int main()
 
             case 4: //Buscar empregado por nome
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcionario que gostaria de buscar: ");
+                printf("\nDigite o nome do funcionário que gostaria de buscar: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -212,12 +212,12 @@ int main()
 
             case 5: //cadastrar vendas
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcion�rio: ");
+                printf("\nDigite o nome do funcionário: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N; i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
                         setbuf(stdin, NULL);
-                        printf("\nDigite o valor da venda do funcionario: ");
+                        printf("\nDigite o valor da venda do funcionário: ");
                         scanf("%f", &venda);
                         Empregado[i].vendas[Empregado[i].contvendas] = venda;
                         Empregado[i].contvendas++;
@@ -232,7 +232,7 @@ int main()
 
             case 6: //ALtera��o de dados
                 setbuf(stdin, NULL);
-                printf("\nDigite o nome do funcion�rio que gostaria de fazer altera��o nos dados: ");
+                printf("\nDigite o nome do funcionário que gostaria de fazer alteração nos dados: ");
                 scanf("%[^\n]", buscafuncpornome);
                 for(int i =0; i < N;i++){
                     if(comparaStrings(Empregado[i].nome, buscafuncpornome) == 1){
@@ -241,38 +241,38 @@ int main()
 
 
                         do{
-                            printf("\n Escolha uma das op��es a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endere�o, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opcao: ");
+                            printf("\n Escolha uma das opções a seguir:\n- Para alterar o nome, digite 1.\n- Para alterar a idade, digite 2.\n- Para alterar o CPF, digite 3.\n- Para alterar o endereço, digite 4.\n- Para alterar o salario, digite 5.\n- Para alterar o cargo, digite 6.\nEscolha uma opção: ");
                             scanf("%d", &escolha);
 
                             switch(escolha){
                                 case 1: {
-                                    printf("\nDigite o nome alterado do funcionario: ");
+                                    printf("\nDigite o nome alterado do funcionário: ");
                                     setbuf(stdin, NULL);
                                     scanf("%49[^\n]", Empregado[i].nome);
                                     break;
                                 }
                                 case 2: {
-                                    printf("\nDigite a idade alterada do funcionario: ");
+                                    printf("\nDigite a idade alterada do funcionário: ");
                                     scanf("%d", &Empregado[i].idade);
                                     break;
                                 }
                                 case 3: {
 
-                                    printf("\nDigite o cpf alterado do funcionario: ");
+                                    printf("\nDigite o cpf alterado do funcionário: ");
                                     setbuf(stdin, NULL);
                                     scanf("%15[^\n]", &Empregado[i].cpf);
                                     break;
                                 }
                                 case 4: {
 
-                                    printf("\nDigite o endereco alterado do funcionario: ");
+                                    printf("\nDigite o endereco alterado do funcionário: ");
                                     setbuf(stdin, NULL);
                                     scanf("%99[^\n]", &Empregado[i].endereco);
                                     break;
                                 }
                                 case 5: {
 
-                                    printf("\nDigite o salario alterado do funcionario: ");
+                                    printf("\nDigite o salario alterado do funcionário: ");
                                     scanf("%f", &Empregado[i].salario);
                                     break;
                                 }
@@ -280,18 +280,17 @@ int main()
 
                                     printf("\nLista de cargos cadastrados:");
                                     for(i=0;i<M;i++){
-                                    printf("\n-Cargo %d: %s.",i,cargos[i]);
+                                    printf("\n-Cargo %d: %s.",i,Cargos[i]);
                                     }
-                                    printf("\nDigite o numero do cargo que deseja atribuir ao funcionario: ");
+                                    printf("\nDigite o número do cargo que deseja atribuir ao funcionário: ");
                                     scanf("%d",&p);
-                                    strcpy (Empregado[i].cargo,cargos[p]);
                                     break;
                                 }
                                 default:
-                                    printf("Op��o inv�lida!\n");
+                                    printf("Opção inválida!\n");
                                     break;
                             }
-                        printf("\nCaso queira fazer outra alera��o digite um n�mero diferente de 0: ");
+                        printf("\nCaso queira fazer outra aleração digite um número diferente de 0: ");
                         scanf("%d", &sair);
 
                         }while(sair!=0);
@@ -336,7 +335,7 @@ int main()
                 break;
 
             default:
-                printf("Op��o inv�lida!\n");
+                printf("Opção inválida!\n");
 
                 break;
         }
